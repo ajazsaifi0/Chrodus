@@ -1,2 +1,2 @@
 # Chrodus
-Responsive site for getting more info about highest passes
+Check it Out here: https://young-earth-57833.herokuapp.com/
