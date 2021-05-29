@@ -1,0 +1,109 @@
+<%- layout("layouts/boilerplate") %>
+
+    <!-- <body>
+        <h1>edit campground</h1>
+        <form action="/campgrounds/<%= e._id %>?_method=PUT " method="POST">
+            <div>
+                <label for="title">Title</label>
+                <input id="title" type="text" name="campground[title]" value="<%= e.title %> ">
+            </div>
+            <div>
+                <label for="location">location</label>
+                <input id="location" type="text" name="campground[location]" value="<%= e.location %> ">
+            </div>
+            <button>submit</button>
+        </form>
+        <a href="/campgrounds/ e._id  ">Back to CampGround</a> -->
+
+
+
+
+    <div class="row">
+        <h1 class="text-center">
+            Edit CampGround
+        </h1>
+        <div class="class col-6 offset-3">
+            <form action="/campgrounds/<%= e._id %>?_method=PUT" method="POST" novalidate class="validated-class"
+                enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-control" id="title" type="text" name="campground[title]" value="<%= e.title %> "
+                     autofocus   required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="location">location</label>
+                    <input class="form-control" id="location" type="text" name="campground[location]" required
+                        value="<%= e.location %>">
+
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="mb-2">Upload More Images</label>
+                    <div class="input-group mb-3">
+                        <input type="file" class="form-control" id="image" name="image" multiple>
+                        <label class="input-group-text" for="image">Upload</label>
+                    </div>
+                    <!-- <input type="file" name="image" id="image" multiple> -->
+
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="price"> &#8377;</span>
+                    <input name="campground[price]" id="price" type="number" class="form-control" placeholder="0"
+                        aria-label="price" aria-describedby="price" value="<%= e.price %> " required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="description">description</label>
+                    <textarea class="form-control" id="description" type="text" name="campground[description]"
+                        required><%= e.description %> </textarea>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <!-- <div class="mb-3">
+                    <% e.image.forEach((img,i)=>{ %>
+                        <img src="<%=img.thumbnail%>" class="img-thumbnail" alt="">
+                        <div class="form-check-inline">
+                            <input type="checkbox" id="image-<%=i%>" name="deleteImages[]" value="<%= img.filename %> ">
+                            <label for="image-<%=i%> ">Want to delete</label>
+                        </div>
+
+                        <% }) %>
+
+                </div> -->
+                <div class="mb-3">
+                    <button class="mb-3 btn btn-success">Update Campgrounds</button>
+                </div>
+            </form>
+            <button class="btn btn-success mb-3"><a href="/campgrounds/<%= e.id %> "
+                    style="text-decoration: none; color: white;">Back</a></button>
+        </div>
+    </div>
+    <script>
+        (function () {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.validated-class')
+
+            // Loop over them and prevent submission
+            Array.from(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    </script>
